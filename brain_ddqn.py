@@ -89,7 +89,7 @@ class Brain:
             
     def replay(self):
         '''learns from memory'''
-        if len(self.memory < self.batch_size):
+        if len(self.memory) < self.batch_size:
             return
         self.counter += 1
         if self.counter % self.update_freq == 0:
