@@ -36,7 +36,7 @@ class PrioritizedMemory:
             b = segment * (i+1)
             s = random.uniform(a,b)
             (idx, p, data) = self.tree.get(s)
-            if data == 0:
+            while data == 0:
                 s = random.uniform(0, a)
                 (idx, p, data) = self.tree.get(s)
             priorities.append(p)
