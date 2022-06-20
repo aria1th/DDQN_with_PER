@@ -48,9 +48,11 @@ class PrioritizedMemory:
         return batch, idxs, is_w
     def __len__(self):
         return len(self.tree)
-    def update(self, idx, error):
+    def update(self, idx, error, update_gamma = None):
         p = self._get_priority(error)
-        self.tree.update(idx, p, self.update_gamma)
+        if update_gamma is None:
+            update_gamma = self.update_gamma
+        self.tree.update(idx, p, update_gamma)
     def clear(self):
         self.capacity = capacity
         self.memory = None # Do not access this directly!
